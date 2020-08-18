@@ -38,23 +38,29 @@ class MinesweeperGame:
                             ]
                     else:
                         if j == 0:
-                            to_check = [(0, 1), (1, 1), (1, 0)]
+                            to_check = [
+                                (i - 1, 0),
+                                (i - 1, 1),
+                                (i, 1),
+                                (i + 1, 1),
+                                (i + 1, 0),
+                            ]
                         else:
                             to_check = [
                                 (i - 1, j - 1),
                                 (i, j - 1),
                                 (i + 1, j - 1),
                                 (i - 1, j),
-                                (i, j - 1),
-                                (i + 1, j + 1),
                                 (i + 1, j),
+                                (i - 1, j + 1),
+                                (i, j + 1),
                                 (i + 1, j + 1),
                             ]
                     for thing in to_check:
                         if thing in mines:
                             out[i][j] += 1
 
-        print(out)
+        return out
 
 
-game = MinesweeperGame(5, 5, 1)
+game = MinesweeperGame(5, 5, 2)
